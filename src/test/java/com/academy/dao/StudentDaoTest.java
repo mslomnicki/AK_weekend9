@@ -6,7 +6,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.Collection;
-import java.util.List;
 
 /**
  * @author Marek Słomnicki <marek@slomnicki.net>
@@ -18,7 +17,7 @@ public class StudentDaoTest {
 
     @Before
     public void setUp() throws Exception {
-        studentDao = new StudentDao();
+        studentDao = new StudentDaoImpl();
         newStudent = new Student(666L, "Marek", "Słomnicki", "java");
         currentStudents = studentDao.getAllStudents();
     }
