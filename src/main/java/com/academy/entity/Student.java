@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "STUDENTS")
-public class Student implements Serializable {
+public class Student {
     @Id
     @GenericGenerator(name = "studentSequence", strategy = "sequence-identity",
             parameters = @org.hibernate.annotations.Parameter(name = "sequence", value = "STUDENTS_SEQ"))
