@@ -1,10 +1,11 @@
 package com.academy.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -34,8 +35,8 @@ public class Student {
     @JoinColumn(name = "ADDRESS_ID")
     private Address address;
 
-    @OneToMany
-    @JoinColumn(name = "STUDENT_ID")
+    @OneToMany(mappedBy="student")
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
     private Set<Book> books;
 
     public Student() {

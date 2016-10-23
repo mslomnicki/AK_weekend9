@@ -1,5 +1,8 @@
 package com.academy.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.ManyToAny;
 
@@ -15,9 +18,10 @@ public class Book {
     @Column(name = "BOOK_ID")
     private Long id;
 
-//    @ManyToOne
-//    @JoinColumn(name = "STUDENT_ID")
-//    private Student student;
+    @ManyToOne
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    @JoinColumn(name = "STUDENT_ID")
+    private Student student;
 
     @Column(name = "TITLE")
     private String title;
@@ -33,13 +37,13 @@ public class Book {
         this.id = id;
     }
 
-//    public Student getStudent() {
-//        return student;
-//    }
-//
-//    public void setStudent(Student student) {
-//        this.student = student;
-//    }
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
 
     public String getTitle() {
         return title;
