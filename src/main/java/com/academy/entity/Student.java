@@ -2,7 +2,6 @@ package com.academy.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -44,6 +43,9 @@ public class Student {
             inverseJoinColumns = @JoinColumn(name = "COURSE_ID"))
     private List<Course> courses;
 
+    @Embedded
+    private Contact contact;
+
     public Student() {
     }
 
@@ -51,6 +53,14 @@ public class Student {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
+    }
+
+    public Contact getContact() {
+        return contact;
+    }
+
+    public void setContact(Contact contact) {
+        this.contact = contact;
     }
 
     public List<Course> getCourses() {
