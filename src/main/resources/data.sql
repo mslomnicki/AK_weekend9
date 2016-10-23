@@ -1,0 +1,3 @@
+INSERT INTO STUDENTS(STUDENT_ID, NAME, LAST_NAME, COURSE) VALUES(1, 'Zenon', 'Baleron', 'plażing');
+INSERT INTO STUDENTS(STUDENT_ID, NAME, LAST_NAME, COURSE) VALUES(2, 'Azja', 'Tuhajbejowicz', 'dendrologia');
+INSERT INTO STUDENTS(STUDENT_ID, NAME, LAST_NAME, COURSE) VALUES(3, 'Arek', 'Zegarek', 'zegarmistrzostwo');

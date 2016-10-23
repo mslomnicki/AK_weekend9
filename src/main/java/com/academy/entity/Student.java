@@ -1,14 +1,31 @@
 package com.academy.entity;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
  * @author Marek Słomnicki <marek@slomnicki.net>
  */
-public class Student {
+@Entity
+@Table(name = "STUDENTS")
+public class Student implements Serializable {
+    @Id
+    @GenericGenerator(name = "studentSequence", strategy = "sequence-identity",
+            parameters = @org.hibernate.annotations.Parameter(name = "sequence", value = "STUDENTS_SEQ"))
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "studentSequence")
+    @Column(name = "STUDENT_ID")
     private Long id;
+
+    @Column(name = "NAME")
     private String name;
+
+    @Column(name = "LAST_NAME")
     private String lastName;
+
+    @Column(name = "COURSE")
     private String course;
 
     public Student() {

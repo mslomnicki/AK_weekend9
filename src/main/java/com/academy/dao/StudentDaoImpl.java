@@ -23,7 +23,7 @@ public class StudentDaoImpl implements StudentDao {
     }
 
     @Override
-    public Student getStudentById(long id) {
+    public Student getStudentById(Long id) {
         return students.get(id);
     }
 

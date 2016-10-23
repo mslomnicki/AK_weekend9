@@ -1,7 +1,6 @@
 package com.academy.service;
 
-import com.academy.dao.StudentDao;
-import com.academy.dao.StudentDaoImpl;
+import com.academy.dao.StudentRepository;
 import com.academy.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,32 +10,32 @@ import java.util.Collection;
 @Service
 public class StudentServiceImpl implements StudentService {
 
-    @Autowired() // Automatycznie podłącza studentDao do studentDaoImpl
-    StudentDao studentDao;
+    @Autowired // Automatycznie podłącza studentRepository
+    private StudentRepository studentRepository;
 
     @Override
     public Collection<Student> getAllStudents() {
-        return studentDao.getAllStudents();
+        return studentRepository.findAll();
     }
 
     @Override
-    public Student getStudentById(long id) {
-        return studentDao.getStudentById(id);
+    public Student getStudentById(Long id) {
+        return studentRepository.getOne(id);
     }
 
     @Override
     public void deleteStudentById(Long id) {
-        studentDao.deleteStudentById(id);
+        studentRepository.delete(id);
     }
 
     @Override
     public void addStudent(Student student) {
-        studentDao.addStudent(student);
+        studentRepository.save(student);
     }
 
     @Override
     public void updateStudent(Student student) {
-        studentDao.updateStudent(student);
+        studentRepository.save(student);
     }
 
 }

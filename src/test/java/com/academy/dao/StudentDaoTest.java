@@ -47,7 +47,7 @@ public class StudentDaoTest {
         studentDao.addStudent(newStudent);
 
         //when
-        Student student = studentDao.getStudentById(666);
+        Student student = studentDao.getStudentById(666L);
 
         // then
         Assert.assertEquals(newStudent, student);

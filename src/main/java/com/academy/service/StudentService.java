@@ -10,7 +10,7 @@ import java.util.Collection;
 public interface StudentService {
     Collection<Student> getAllStudents();
 
-    Student getStudentById(long id);
+    Student getStudentById(Long id);
 
     void deleteStudentById(Long id);
 
