@@ -2,10 +2,12 @@ package com.academy.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -28,25 +30,35 @@ public class Student {
     @Column(name = "LAST_NAME")
     private String lastName;
 
-    @Column(name = "COURSE")
-    private String course;
-
     @OneToOne
     @JoinColumn(name = "ADDRESS_ID")
     private Address address;
 
-    @OneToMany(mappedBy="student")
+    @OneToMany(mappedBy = "student")
     @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
     private Set<Book> books;
+
+    @ManyToMany
+    @JoinTable(name = "STUDENTS_COURSES",
+            joinColumns = @JoinColumn(name = "STUDENT_ID"),
+            inverseJoinColumns = @JoinColumn(name = "COURSE_ID"))
+    private List<Course> courses;
 
     public Student() {
     }
 
-    public Student(Long id, String name, String lastName, String course) {
+    public Student(Long id, String name, String lastName) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
-        this.course = course;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
     }
 
     public Long getId() {
@@ -73,14 +85,6 @@ public class Student {
         this.lastName = lastName;
     }
 
-    public String getCourse() {
-        return course;
-    }
-
-    public void setCourse(String course) {
-        this.course = course;
-    }
-
     public Address getAddress() {
         return address;
     }
@@ -104,8 +108,7 @@ public class Student {
         Student student = (Student) o;
         return Objects.equals(id, student.id) &&
                 Objects.equals(name, student.name) &&
-                Objects.equals(lastName, student.lastName) &&
-                Objects.equals(course, student.course);
+                Objects.equals(lastName, student.lastName);
     }
 
     @Override

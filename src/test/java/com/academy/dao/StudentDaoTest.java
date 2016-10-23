@@ -26,7 +26,7 @@ public class StudentDaoTest {
 
     @Before
     public void setUp() throws Exception {
-        newStudent = new Student(666L, "Marek", "Słomnicki", "java");
+        newStudent = new Student(666L, "Marek", "Słomnicki");
         currentStudents = studentDao.getAllStudents();
     }
 

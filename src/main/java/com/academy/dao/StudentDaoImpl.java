@@ -12,9 +12,9 @@ public class StudentDaoImpl implements StudentDao {
     Map<Long, Student> students = new HashMap<>();
 
     public StudentDaoImpl() {
-        addStudent(new Student(1L, "Zenon", "Baleron", "plażing"));
-        addStudent(new Student(2L, "Arek", "Zegarek", "informatyka"));
-        addStudent(new Student(3L, "Innocenty", "Kuś", "matematyka"));
+        addStudent(new Student(1L, "Zenon", "Baleron"));
+        addStudent(new Student(2L, "Arek", "Zegarek"));
+        addStudent(new Student(3L, "Innocenty", "Kuś"));
     }
 
     @Override
