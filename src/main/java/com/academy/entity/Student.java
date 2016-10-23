@@ -4,11 +4,9 @@ package com.academy.entity;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * @author Marek Słomnicki <marek@slomnicki.net>
@@ -32,9 +30,13 @@ public class Student {
     @Column(name = "COURSE")
     private String course;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "ADDRESS_ID")
     private Address address;
+
+    @OneToMany
+    @JoinColumn(name = "STUDENT_ID")
+    private Set<Book> books;
 
     public Student() {
     }
@@ -84,6 +86,14 @@ public class Student {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        this.books = books;
     }
 
     @Override
