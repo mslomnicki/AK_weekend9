@@ -11,6 +11,9 @@ public class Student {
     private String lastName;
     private String course;
 
+    public Student() {
+    }
+
     public Student(Long id, String name, String lastName, String course) {
         this.id = id;
         this.name = name;

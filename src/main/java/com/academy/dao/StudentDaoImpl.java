@@ -1,14 +1,13 @@
 package com.academy.dao;
 
 import com.academy.entity.Student;
+import org.springframework.stereotype.Repository;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * @author Marek Słomnicki <marek@slomnicki.net>
- */
+@Repository
 public class StudentDaoImpl implements StudentDao {
     Map<Long, Student> students = new HashMap<>();
 

@@ -3,14 +3,16 @@ package com.academy.service;
 import com.academy.dao.StudentDao;
 import com.academy.dao.StudentDaoImpl;
 import com.academy.entity.Student;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 
-/**
- * @author Marek Słomnicki <marek@slomnicki.net>
- */
+@Service
 public class StudentServiceImpl implements StudentService {
-    StudentDao studentDao = new StudentDaoImpl();
+
+    @Autowired() // Automatycznie podłącza studentDao do studentDaoImpl
+    StudentDao studentDao;
 
     @Override
     public Collection<Student> getAllStudents() {

@@ -4,20 +4,28 @@ import com.academy.entity.Student;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Collection;
 
 /**
  * @author Marek Słomnicki <marek@slomnicki.net>
  */
+@RunWith(SpringRunner.class)
+@SpringBootTest
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class StudentDaoTest {
+    @Autowired
     StudentDao studentDao;
     Student newStudent;
     Collection<Student> currentStudents;
 
     @Before
     public void setUp() throws Exception {
-        studentDao = new StudentDaoImpl();
         newStudent = new Student(666L, "Marek", "Słomnicki", "java");
         currentStudents = studentDao.getAllStudents();
     }
